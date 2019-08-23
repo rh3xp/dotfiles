@@ -1,0 +1,28 @@
+#!/bin/bash
+# My aliases
+alias .='cd ..'
+alias ..='cd ../../'
+alias cal='cal -3'
+alias reboot="sudo shutdown -r now"
+alias off="sudo shutdown -h now"
+alias c='clear'
+alias zrc='vim ~/.zshrc'
+alias reload='. ~/.zshrc'
+alias vrc='vim ~/.vimrc'
+
+# Git
+alias gt='git init'
+alias gdf='git diff'
+alias gadd='git add'
+alias gcm='git commit -m'
+alias gst='git status -s'
+alias gpl='git pull'
+alias gps='git push'
+alias glog='git log'
+alias gbr='git branch'
+alias gco='git checkout'
+
+
+# bare repo
+alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
+alias gh='cd $HOME/Desktop/github/'
