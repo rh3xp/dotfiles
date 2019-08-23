@@ -1,0 +1,353 @@
+################################################
+##########       Font and Keys        ##########
+################################################
+
+set $mod Mod4
+set $mod1 Mod1
+
+font pango: Hack Nerd Font, FontAwesome 14px
+
+################################################
+##########         i3 gaps            ##########
+################################################
+
+for_window [class="^.*"] border pixel 2
+gaps inner 7
+gaps outer 7
+smart_gaps on
+smart_borders on 
+
+#gaps inner 10
+#gaps outer 10
+#gaps horizontal 10
+#gaps vertical 10
+#gaps top 10
+#gaps right 10
+#gaps bottom 10
+#gaps left 10
+
+
+################################################
+##########           Colors           ##########
+################################################
+
+set $base00 #101218
+set $base01 #1f222d
+set $base02 #252936
+set $base03 #7780a1
+set $base04 #C0C5CE
+set $base05 #d1d4e0
+set $base06 #C9CCDB
+set $base07 #ffffff
+set $base08 #ee829f
+set $base09 #f99170
+set $base0A #ffefcc
+set $base0B #a5ffe1
+set $base0C #97e0ff
+set $base0D #97bbf7
+set $base0E #c0b7f9
+set $base0F #fcc09e
+
+
+################################################
+##########          Movement          ##########
+################################################
+
+# change focus
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+semicolon focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+semicolon move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+hide_edge_borders smart
+
+# so that popups dont do fullscreen
+popup_during_fullscreen smart
+
+################################################
+##########           Tiling           ##########
+################################################
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+
+# focus the child container
+#bindsym $mod+d focus child
+
+################################################
+##########         Workspaces         ##########
+################################################
+
+# workspaces
+set $w1 "1:  Terminal"
+set $w2 "2:  Code"
+set $w3 "3:  Chromium"
+set $w4 "4:  VLC"
+set $w5 "5:  Spotify"
+set $w6 "6:  TeamViewer"
+set $w7 "7:  VirtualBox"
+set $w8 "8:  Android Dev"
+
+
+# switch to workspace
+bindsym $mod+1 workspace $w1
+bindsym $mod+2 workspace $w2
+bindsym $mod+3 workspace $w3
+bindsym $mod+4 workspace $w4
+bindsym $mod+5 workspace $w5
+bindsym $mod+6 workspace $w6
+bindsym $mod+7 workspace $w7
+bindsym $mod+8 workspace $w8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $w1
+bindsym $mod+Shift+2 move container to workspace $w2
+bindsym $mod+Shift+3 move container to workspace $w3
+bindsym $mod+Shift+4 move container to workspace $w4
+bindsym $mod+Shift+5 move container to workspace $w5
+bindsym $mod+Shift+6 move container to workspace $w6
+bindsym $mod+Shift+7 move container to workspace $w7
+bindsym $mod+Shift+8 move container to workspace $w8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+
+
+# Cycle through workspaces
+bindsym $mod+Tab workspace next
+bindsym $mod+Shift+Tab workspace prev
+
+# change workspace
+bindsym $mod+$mod1+Left workspace prev
+bindsym $mod+$mod1+Right workspace next
+
+################################################
+##########           Config           ##########
+################################################
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+
+# resize window (you can also use the mouse for that)
+
+bindsym $mod+r mode "resize"
+
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym $left       resize shrink width 10 px or 10 ppt
+        bindsym $down       resize grow height 10 px or 10 ppt
+        bindsym $up         resize shrink height 10 px or 10 ppt
+        bindsym $right      resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left        resize shrink width 10 px or 10 ppt
+        bindsym Down        resize grow height 10 px or 10 ppt
+        bindsym Up          resize shrink height 10 px or 10 ppt
+        bindsym Right       resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+
+################################################
+##########           i3bar            ##########
+################################################
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+
+exec --no-startup-id blueberry-tray
+
+exec_always --no-startup-id nm-applet
+
+exec --no-startup-id numlockx on
+
+bar {
+		#status_command i3status -c ~/.config/i3/i3status.conf
+		status_command i3blocks -c ~/.config/i3/i3blocks-awesome.conf
+		font pango: Hack Nerd Font, FontAwesome 13px
+		workspace_buttons yes
+        position top
+        #strip_workspace_numbers yes
+        #bindsym button4 nop
+        #bindsym button5 nop
+        colors {
+              separator $base03
+              background $base01
+              statusline $base05
+#                        border  background text
+              focused_workspace  $base01 $base01    $base07
+              active_workspace   $base01 $base02    $base03
+              inactive_workspace $base01 $base01    $base03
+              urgent_workspace   $base01 $base01    $base08
+    }
+}
+
+################################################
+##########     Workspace Defaults     ##########
+################################################
+
+# assign progrmas
+assign [class="Chromium-browser"] $w3
+assign [class="vlc"] $w4
+assign [class="Spotify"] $w5
+assign [class="TeamViewer"] $w6
+assign [class="VirtualBox"] $w7
+
+
+################################################
+##########       Basic Settings       ##########
+################################################
+
+# i3lock
+#bindsym $mod+shift+x exec i3lock --dpms 120 --image="/home/normalguy/Pictures/wallpaper.jpg"
+
+# brightness
+#bindsym XF86MonBrightnessUp exec xbacklight -inc 20 #increase birghtness
+#bindsym XF86MonBrightnessDown exec xbacklight -dec 20 #decrease brightness
+
+bindsym XF86MonBrightnessDown exec light -U 10
+bindsym XF86MonBrightnessUp exec light -A 10
+
+# wallpaper
+#exec_always feh --bg-scale ~/Pictures/wallpapers/sudo.png
+
+# compton
+exec_always --no-startup-id compton --config ~/.config/i3/compton.conf
+
+# Volume
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% && pkill -RTMIN+10 i3blocks  #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% && pkill -RTMIN+10 i3blocks  #increase sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle && pkill -RTMIN+10 i3blocks #mute sound
+
+# Media player controls
+bindsym XF86AudioPlay exec playerctl play
+bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+# Screenshot
+
+# Screen
+bindsym --release Print exec "scrot ~/Pictures/Screenshots/%d-%m-%y_%H-%M-%S_$w-x-$h.png; exec notify-send 'Desktop Screenshot Captured'"
+
+bindsym --release Ctrl+Shift+Print exec "scrot -u ~/Pictures/Screenshots/%d-%m-%Y_%H-%M-%S_$w-x-$h.png; exec notify-send 'Window Screenshot Captured'"
+
+# weird selection
+bindsym Shift+Print exec "sleep 0.2; gnome-screenshot -a"
+
+################################################
+##########        Exit Script         ##########
+################################################
+
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec --no-startup-id "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+
+#Press $mod (super) and X to exit - check toolbar for next choices
+bindsym $mod+X mode "$mode_system"
+bindsym control+mod1+Delete mode "$mode_system"
+
+set $mode_system System (k) lock, (l) logout, (u) suspend, (h) hibernate, (r) reboot, (s) shutdown
+mode "$mode_system" {
+    bindsym k exec --no-startup-id ~/.config/i3/scripts/i3exit.sh lock, mode "default"
+    bindsym l exec --no-startup-id ~/.config/i3/scripts/i3exit.sh logout, mode "default"
+    bindsym u exec --no-startup-id ~/.config/i3/scripts/i3exit.sh suspend, mode "default"
+    bindsym h exec --no-startup-id ~/.config/i3/scripts/i3exit.sh hibernate, mode "default"
+    bindsym r exec --no-startup-id ~/.config/i3/scripts/i3exit.sh reboot, mode "default"
+    bindsym s exec --no-startup-id ~/.config/i3/scripts/i3exit.sh shutdown, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+$mod1+l exec "betterlockscreen --lock"; exec "systemctl suspend"
+
+
+################################################
+##########        Applications        ##########
+################################################
+
+# launch by default
+exec --no-startup-id kitty
+exec --no-startup-id variety
+
+# workspace 1 has terminal always
+bindsym $mod+Return exec --no-startup-id kitty;focus
+
+# rofi theme selector
+bindsym control+mod1+r exec --no-startup-id rofi-theme-selector
+
+# when crashes; kills all instances of that app
+bindsym --release $mod+Escape exec xkill
+
+# show/hide i3bar
+bindsym $mod+b bar mode toggle
+
+# start nemo(what about nnn? )
+bindsym $mod+Shift+Return exec nemo
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# start rofi
+bindsym $mod+d exec --no-startup-id rofi -show run -lines 5
+
+# starts redshift for reduced eye strain
+exec --no-startup-id redshift -l 51.500152:-0.126236
