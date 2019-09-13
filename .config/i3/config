@@ -80,6 +80,9 @@ bindsym $mod+Shift+Right move right
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+# resize floating window with mouse without $mod+r
+bindmouse button1 resize
+
 hide_edge_borders smart
 
 # so that popups dont do fullscreen

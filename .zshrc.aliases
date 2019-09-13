@@ -18,7 +18,7 @@ alias gcm='git commit -m'
 alias gst='git status -s'
 alias gpl='git pull'
 alias gps='git push'
-alias glog='git log'
+alias glog='git log --all --decorate --oneline --graph'
 alias gbr='git branch'
 alias gco='git checkout'
 
@@ -26,3 +26,4 @@ alias gco='git checkout'
 # bare repo
 alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
 alias gh='cd $HOME/Desktop/github/'
+alias server=' /usr/bin/chromium-browser http://localhost:8000 && python3 -m http.server'
