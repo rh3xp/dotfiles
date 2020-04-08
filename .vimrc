@@ -78,6 +78,7 @@ set list
 nnoremap ; :
 nnoremap : ;
 
+
 nnoremap <C-q> :q<CR>
 nnoremap <C-s> :w<CR>
 nnoremap <C-S-s> :wq<CR>
@@ -175,6 +176,9 @@ set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set backupskip=/tmp/*,/private/tmp/*
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set writebackup
+set undofile " Maintain undo history between sessions
+set undodir=~/.vim/undodir
+
 
 " }}}
 
