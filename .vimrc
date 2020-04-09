@@ -14,6 +14,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'neoclide/coc.nvim'
 Plugin 'sjl/badwolf'
+Plugin 'tomasr/molokai'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'bling/vim-airline'
@@ -29,7 +30,7 @@ call vundle#end()            " required
 
 
 " Color {{{
-colorscheme badwolf         " awesome colorscheme
+colorscheme molokai    " awesome colorscheme
 " }}}
 
 " Basics {{{
@@ -77,7 +78,6 @@ set list
 
 nnoremap ; :
 nnoremap : ;
-
 
 nnoremap <C-q> :q<CR>
 nnoremap <C-s> :w<CR>
@@ -176,9 +176,6 @@ set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set backupskip=/tmp/*,/private/tmp/*
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set writebackup
-set undofile " Maintain undo history between sessions
-set undodir=~/.vim/undodir
-
 
 " }}}
 
