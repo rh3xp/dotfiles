@@ -125,34 +125,18 @@ if [ -x /usr/bin/mint-fortune ]; then
 fi
 
 
-#########################################################
-#                   MY SETTINGS                         #
-#########################################################
-
 # aliases
 source ~/.aliases
 
-# functions
-source ~/.bashrc.functions
+
+export PS1="\[\033[38;5;196m\]\u\[$(tput sgr0)\]\[\033[38;5;15m\]@\[$(tput sgr0)\]\[\033[38;5;178m\]\h\[$(tput sgr0)\]\[\033[38;5;15m\]:\[$(tput sgr0)\]\[\033[38;5;32m\][\w]\[$(tput sgr0)\]\[\033[38;5;6m\]:\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]"
+
+
+
+export PATH="$PATH:/home/thenerdsuperuser/development/flutter/bin"
 
 # disables shitty ctrl+s, check Software Flow Control (XON/XOFF flow control)
 stty -ixon
 
-# theme
-export PS1="\[\033[38;5;196m\]\u\[$(tput sgr0)\]\[\033[38;5;15m\]@\[$(tput sgr0)\]\[\033[38;5;178m\]\h\[$(tput sgr0)\]\[\033[38;5;15m\]:\[$(tput sgr0)\]\[\033[38;5;32m\][\w]\[$(tput sgr0)\]\[\033[38;5;6m\]:\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]"
 
-export EDITOR=vim
 
-#########################################################
-#                 PATH and ENV Variables                #
-#########################################################
-
-export PATH="${PATH}:${HOME}/.local/bin/"
-
-JAVA_HOME=/usr/lib/jvm/java-8-oracle/bin/
-export JAVA_HOME
-PATH=$PATH:$JAVA_HOME
-export PATH
-
-export ANDROID_HOME=~/Android/Sdk
-export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
