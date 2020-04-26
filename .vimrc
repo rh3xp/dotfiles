@@ -17,7 +17,9 @@ Plugin 'sjl/badwolf'
 Plugin 'tomasr/molokai'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'jiangmiao/auto-pairs'
 Plugin 'bling/vim-airline'
+Plugin 'dart-lang/dart-vim-plugin'
 "Plugin 'davidhalter/jedi-vim'
 
 
@@ -205,7 +207,7 @@ let g:ctrlp_custom_ignore='\v[\/](.git|hg|svn|node_modules|dist|__pycache__)$'
 
 
 " NERDTree {{{
-nmap <F6> :NERDTreeToggle<CR>
+nnoremap <F6> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 let NERDTreeQuitOnOpen=1
 
@@ -375,5 +377,12 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 " }}}
 
+
+" Dartland {{{
+let g:dart_style_guide = 2
+" }}}
+
+
+let g:rehash256 = 1
 
 " vim:foldmethod=marker:foldlevel=0
