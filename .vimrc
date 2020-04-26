@@ -384,5 +384,9 @@ let g:dart_style_guide = 2
 
 
 let g:rehash256 = 1
+set background=dark
+set t_Co=256
+
+
 
 " vim:foldmethod=marker:foldlevel=0
