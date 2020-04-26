@@ -1,0 +1,2 @@
+alias tmux='tmux -2 -u'
+alias gh='cd ~/Desktop/git'
