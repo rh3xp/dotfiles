@@ -139,4 +139,4 @@ export PATH="$PATH:/home/thenerdsuperuser/development/flutter/bin"
 stty -ixon
 
 
-
+if [[ $TERM == xterm ]]; then TERM=xterm-256color; fi
