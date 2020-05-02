@@ -20,6 +20,7 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'bling/vim-airline'
 Plugin 'dart-lang/dart-vim-plugin'
+Plugin 'wakatime/vim-wakatime'
 "Plugin 'davidhalter/jedi-vim'
 
 
