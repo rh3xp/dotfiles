@@ -132,6 +132,7 @@ source ~/.aliases
 export PS1="\[\033[38;5;196m\]\u\[$(tput sgr0)\]\[\033[38;5;15m\]@\[$(tput sgr0)\]\[\033[38;5;178m\]\h\[$(tput sgr0)\]\[\033[38;5;15m\]:\[$(tput sgr0)\]\[\033[38;5;32m\][\w]\[$(tput sgr0)\]\[\033[38;5;6m\]:\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]"
 
 
+export PATH="$PATH:$HOME/.cargo/bin"
 
 export PATH="$PATH:/home/thenerdsuperuser/development/flutter/bin"
 
@@ -140,3 +141,4 @@ stty -ixon
 
 
 if [[ $TERM == xterm ]]; then TERM=xterm-256color; fi
+source ~/.bash_alacritty
