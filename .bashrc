@@ -142,3 +142,6 @@ stty -ixon
 
 if [[ $TERM == xterm ]]; then TERM=xterm-256color; fi
 source ~/.bash_alacritty
+
+
+export EDITOR=vim
