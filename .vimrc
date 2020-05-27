@@ -31,8 +31,10 @@ Plug 'mhinz/vim-startify'
 Plug 'liuchengxu/vim-which-key'
 Plug 'francoiscabrol/ranger.vim'
 Plug 'rbgrouleff/bclose.vim'
-Plug 'lilydjwg/colorizer'
-"Plug 'davidhalter/jedi-vim'
+Plug 'gko/vim-coloresque'
+Plug 'prettier/vim-prettier', {'do': 'npm install', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html']}
+Plug 'davidhalter/jedi-vim'
+Plug 'airblade/vim-gitgutter'
 
 
 call plug#end()
@@ -45,6 +47,9 @@ colorscheme molokai    " awesome colorscheme
 " }}}
 
 " Basics {{{
+let mapleader=","       " leader is comma
+
+
 set nocompatible              " be iMproved, required
 syntax enable           " enable syntax processing
 set encoding=UTF-8
@@ -126,9 +131,6 @@ nnoremap ^ <nop>
 nnoremap gV `[v`]
 
 
-let mapleader=","       " leader is comma
-
-
 " jk is escape
 inoremap jk <esc>
 
@@ -149,6 +151,7 @@ augroup configgroup
     autocmd!
     autocmd VimEnter * highlight clear SignColumn
     " autocmd BufWritePre *.php,*.py,*.js,*.txt,*.hs,*.java,*.md :call <SID>StripTrailingWhitespaces()
+    autocmd FileType html setlocal ts=2 sts=2 sw=2
     autocmd FileType java setlocal noexpandtab
     autocmd FileType java setlocal list
     autocmd FileType java setlocal listchars=tab:+\ ,eol:-
@@ -430,6 +433,27 @@ let g:colorizer_maxlines = 1000
 
 " }}}
 
+
+" Which-Key {{{
+nnoremap <silent> <leader> :WhichKey ','<CR>
+
+" By default timeoutlen is 1000 ms
+set timeoutlen=500
+
+"}}}
+
+" Git Gutter {{{
+
+highlight GitGutterAdd guifg=#009900 ctermfg=Green
+highlight GitGutterChange guifg=#bbbb00 ctermfg=Yellow
+highlight GitGutterDelete guifg=#ff2222 ctermfg=Red
+nmap ) <Plug>(GitGutterNextHunk)
+nmap ( <Plug>(GitGutterPrevHunk)
+let g:gitgutter_enabled = 1
+let g:gitgutter_map_keys = 0
+nnoremap <leader>df :GitGutterFold<CR>
+
+" }}}
 
 let g:rehash256 = 1
 " set background=dark
