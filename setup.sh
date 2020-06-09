@@ -22,3 +22,7 @@ sudo systemctl start teamviewerd
 
 sudo systemctl enable teamviewerd
 
+
+# bash-autocomplete
+
+sudo pacman -S bash-completion
