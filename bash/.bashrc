@@ -127,6 +127,7 @@ fi
 
 # aliases
 source ~/.aliases
+source ~/.bash_function
 
 
 export PS1="\[\033[38;5;196m\]\u\[$(tput sgr0)\]\[\033[38;5;15m\]@\[$(tput sgr0)\]\[\033[38;5;178m\]\h\[$(tput sgr0)\]\[\033[38;5;15m\]:\[$(tput sgr0)\]\[\033[38;5;32m\][\w]\[$(tput sgr0)\]\[\033[38;5;6m\]:\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]"
@@ -134,8 +135,9 @@ export PS1="\[\033[38;5;196m\]\u\[$(tput sgr0)\]\[\033[38;5;15m\]@\[$(tput sgr0)
 
 export PATH="$PATH:$HOME/.cargo/bin"
 
-export PATH="$PATH:/home/thenerdsuperuser/development/flutter/bin"
-export PATH="$PATH:/home/thenerdsuperuser/Android/Sdk/emulator/"
+export PATH="$PATH:/home/parth/development/flutter/bin"
+export PATH="$PATH:/home/parth/Android/Sdk/emulator/"
+export PATH="`ruby -e 'puts Gem.user_dir'`/bin:$PATH"
 
 
 # disables shitty ctrl+s, check Software Flow Control (XON/XOFF flow control)
@@ -143,8 +145,10 @@ stty -ixon
 
 
 if [[ $TERM == xterm ]]; then TERM=xterm-256color; fi
-source ~/.bash_alacritty
 
 eval "$(gh completion -s bash)"
 
 export EDITOR=vim
+# Install Ruby Gems to ~/gems
+export GEM_HOME="$HOME/gems"
+export PATH="$HOME/gems/bin:$PATH"

@@ -1,0 +1,18 @@
+# activate the virtualenv if exists, create and activate if doesn't
+function py3 {
+	ENV=env
+	REQUIREMENT=requirements.txt
+	if [ -d "$ENV" ]; then
+		echo "$FILE exists. Activating...";
+		source $ENV/bin/activate;
+	else
+		virtualenv $ENV -p python3;
+		source $ENV/bin/activate;
+		
+		if [ -f "$REQUIREMENT" ]; then
+			echo "Installing requirements...";
+			pip install -r $REQUIREMENT;
+		fi
+	fi
+
+}
