@@ -1,0 +1,3 @@
+alias tmux='tmux -2 -u'
+alias lp='cd ~/Desktop/git/loopsync/'
+alias unpy3='deactivate; rm -rf env/'
