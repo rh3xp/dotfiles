@@ -1,18 +1,72 @@
+#!/bin/bash
+
+
 # activate the virtualenv if exists, create and activate if doesn't
 function py3 {
+	
+	DELETE=$1
 	ENV=env
 	REQUIREMENT=requirements.txt
-	if [ -d "$ENV" ]; then
-		echo "$FILE exists. Activating...";
-		source $ENV/bin/activate;
+
+
+	if [[ -d "$ENV"/ ]]; then
+		echo "$ENV exists. Activating...";
+		source "$ENV"/bin/activate;
 	else
-		virtualenv $ENV -p python3;
-		source $ENV/bin/activate;
+		echo "Creating virtual environment with python3..."
+		virtualenv "$ENV" -p python3;
+		source "$ENV"/bin/activate;
 		
-		if [ -f "$REQUIREMENT" ]; then
+		if [[ -f "$REQUIREMENT" ]]; then
 			echo "Installing requirements...";
-			pip install -r $REQUIREMENT;
+			pip install -r "$REQUIREMENT";
 		fi
 	fi
 
+	if [[ "$1" = "del" ]]; then
+		echo "Deleting virtual environment...";
+	rm -rf "$ENV";
+	fi
+
 }
+
+function streaming {
+     INRES="1366x768" # input resolution
+     OUTRES="1920x1080" # output resolution
+     FPS="30" # target FPS
+     GOP="60" # i-frame interval, should be double of FPS,
+     GOPMIN="30" # min i-frame interval, should be equal to fps,
+     THREADS="2" # max 6
+     CBR="1000k" # constant bitrate (should be between 1000k - 3000k)
+     QUALITY="ultrafast"  # one of the many FFMPEG preset
+     AUDIO_RATE="44100"
+     STREAM_KEY="$1" # use the terminal command Streaming streamkeyhere to stream your video to twitch or justin
+     SERVER="live-fra" # twitch server in frankfurt, see https://stream.twitch.tv/ingests/ for list
+
+     ffmpeg -f x11grab -s "$INRES" -r "$FPS" -i :0.0 -f pulse -i 0 -f flv -ac 2 -ar $AUDIO_RATE \
+       -vcodec libx264 -g $GOP -keyint_min $GOPMIN -b:v $CBR -minrate $CBR -maxrate $CBR -pix_fmt yuv420p\
+       -s $OUTRES -preset $QUALITY -tune film -acodec aac -threads $THREADS -strict normal \
+       -bufsize $CBR "rtmp://$SERVER.twitch.tv/app/$STREAM_KEY"
+ }
+
+
+function sting {
+     INRES="1366x768" # input resolution
+     OUTRES="1920x1080" # output resolution
+     FPS="30" # target FPS
+     GOP="60" # i-frame interval, should be double of FPS,
+     GOPMIN="30" # min i-frame interval, should be equal to fps,
+     THREADS="2" # max 6
+     CBR="1000k" # constant bitrate (should be between 1000k - 3000k)
+     QUALITY="ultrafast"  # one of the many FFMPEG preset
+     AUDIO_RATE="44100"
+     STREAM_KEY="$1" # use the terminal command Streaming streamkeyhere to stream your video to twitch or justin
+     SERVER="live-fra" # twitch server in frankfurt, see https://stream.twitch.tv/ingests/ for list
+     FILE="$2"
+     FILE_RES="1366x768"
+
+     ffmpeg -f x11grab -s "$INRES" -r "$FPS" -i :0.0 -f pulse -i 1 -f flv -ac 2 -ar $AUDIO_RATE \
+       -vcodec libx264 -g $GOP -keyint_min $GOPMIN -b:v $CBR -minrate $CBR -maxrate $CBR -pix_fmt yuv420p\
+       -s $OUTRES -preset $QUALITY -tune film -acodec aac -threads $THREADS -strict normal \
+       -bufsize $CBR "rtmp://$SERVER.twitch.tv/app/$STREAM_KEY" -video_size $FILE_RES ~/$FILE.mp4
+ }
