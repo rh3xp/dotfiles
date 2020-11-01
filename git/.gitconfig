@@ -1,7 +1,6 @@
 [user]
 	name = Parth Krishna
 	email = thenerdsuperuser@gmail.com
-	signingkey = BE09851289737E18
 [alias]
 	uncommit = reset HEAD^
 	glog = log --graph --oneline --decorate
