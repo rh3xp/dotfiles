@@ -2,14 +2,7 @@
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH="/home/thenerdsuperuser/.oh-my-zsh"
-
-
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-#ZSH_THEME=random
+export ZSH="/home/parth/.oh-my-zsh"
 
 # Function to find user_symbol
 if [[ $UID -eq 0 ]]; then
@@ -19,6 +12,12 @@ else
   local user_host='%{$terminfo[bold]$fg[green]%}%n@%m %{$reset_color%}'
   local user_symbol='$';
 fi
+
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+# ZSH_THEME="robbyrussell"
 
 ZSH_THEME="powerlevel9k/powerlevel9k"
 POWERLEVEL9K_MODE="nerdfont-complete"
@@ -33,15 +32,13 @@ POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(command_execution_time user host time)
 POWERLEVEL9K_COMMAND_EXECUTION_TIME_BACKGROUND='black'
 POWERLEVEL9K_COMMAND_EXECUTION_TIME_FOREGROUND='white'
 POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=0
-#POWERLEVEL9K_DISABLE_RPROMPT=true
-#POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="╰─"
-#POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX=""
 
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
+# a theme from this variable instead of looking in $ZSH/themes/
 # If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster"  "bira" "miloshadzic" "mortalscumbag" "tjkirch" )
 
 # Uncomment the following line to use case-sensitive completion.
@@ -59,6 +56,9 @@ ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster"  "bira" "miloshadzic" "m
 
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS="true"
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -89,29 +89,27 @@ ENABLE_CORRECTION="true"
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 # Which plugins would you like to load?
-# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-#plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
-plugins=(git aws virtualenv zsh-autosuggestions)
-
+plugins=(git virtualenv zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-# export MANPATH="/usr/local/man:$MANPATH"
+export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='vim'
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -126,26 +124,12 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 #########################################################
-#                 PATH and ENV Variables                #
-#########################################################
-
-export PATH="${PATH}:${HOME}/.local/bin/"
-
-JAVA_HOME=/usr/lib/jvm/java-8-oracle/bin/
-export JAVA_HOME
-PATH=$PATH:$JAVA_HOME
-export PATH
-
-export ANDROID_HOME=~/Android/Sdk
-export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
-
-
-#########################################################
 #                   MY SETTINGS                         #
 #########################################################
 
 export EDITOR='vim'
 stty -ixon
 source ~/.profile
-source ~/.zshrc.aliases
-source ~/.zshrc.functions
+source ~/.aliases
+source ~/.bash_function
+
