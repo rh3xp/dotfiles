@@ -28,7 +28,7 @@ POWERLEVEL9K_CUSTOM_LINUX_ICON="echo "
 POWERLEVEL9K_CUSTOM_LINUX_ICON_BACKGROUND=000
 POWERLEVEL9K_CUSTOM_LINUX_ICON_FOREGROUND=fff
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(custom_linux_icon dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(command_execution_time user host time)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(virtualenv command_execution_time user host time)
 POWERLEVEL9K_COMMAND_EXECUTION_TIME_BACKGROUND='black'
 POWERLEVEL9K_COMMAND_EXECUTION_TIME_FOREGROUND='white'
 POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=0
@@ -128,8 +128,10 @@ fi
 #########################################################
 
 export EDITOR='vim'
+export TERM="xterm-256color"
 stty -ixon
 source ~/.profile
 source ~/.aliases
 source ~/.bash_function
 
+source ~/.src_path
